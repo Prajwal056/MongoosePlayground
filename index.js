@@ -1,14 +1,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const SampleModel = require('./models/SampleModel1');
+require('dotenv').config();
+const database = process.env.DATABASE_URL;
 
-const mono_db = process.env.DATABASE_URL
+if (!database) {
+  console.error('DATABASE_URL is not defined in environment variables.');
+  process.exit(1); // Exit the application if DATABASE_URL is not defined
+}
 
 // Set up Express app
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Set up Mongoose connection
-mongoose.connect('mono_db', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -16,11 +22,10 @@ db.once('open', () => {
   console.log('Connected to MongoDB');
 });
 
-
 // Define a simple GET endpoint
 app.get('/', async (req, res) => {
   try {
-    // Create a sample document (replace with your own logic)
+    // Create a sample document
     const sampleData = new SampleModel({
       name: 'John Doe',
       age: 25,
