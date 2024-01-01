@@ -1,0 +1,16 @@
+{
+  "name": "mongooseplayground",
+  "version": "1.0.0",
+  "description": "🍃 **MongoosePlayground**  Master Mongoose with practical examples. Explore schemas, models, and queries. Contribute and enhance your MongoDB skills. Happy coding!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3"
+  }
+}
